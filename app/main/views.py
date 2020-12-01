@@ -19,3 +19,15 @@ def index():
         return redirect(url_for('search', articles_name=search_articles))
     else:
         return render_template('index.html',title = title, general = general_categories)
+
+@main.route('/newsarticle/<id>')
+def newsarticle(id):
+
+    """
+    Function that returns the article details page and its data
+    """
+    articles_items = get_articles(id)
+    title = f'{id} | News Articles'
+    return render_template('newsarticle.html',title = title,articles = articles_items)
+
+
