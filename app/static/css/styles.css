@@ -1,0 +1,26 @@
+.navbar-inverse{
+    color: black;
+}
+.form-control {
+    width: 130px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    padding: 12px 20px 12px 40px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+  }
+title {
+  font-weight: bolder;
+}
+.footer{
+  font-size: large;
+}
+  .grid-container{
+    text-align: center;
+    display: grid;
+    grid-template-columns: auto auto auto;
+  }
+  @import "~bootstrap/dist/css/bootstrap.css"
