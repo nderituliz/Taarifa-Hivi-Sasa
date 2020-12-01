@@ -29,5 +29,20 @@ def newsarticle(id):
     articles_items = get_articles(id)
     title = f'{id} | News Articles'
     return render_template('newsarticle.html',title = title,articles = articles_items)
+    
+@main.route('/search/<articles_name>')
+def search(articles_name):
+    articles_name_list = articles_name.split(" ")
+    articles_name_format = "+".join(articles_name_list)
+    searched_articles = searched_articles(articles_name_format)
+    title = 'News results'
+    search_articles = request.args.get('articles_search')
+    if search_articles:
+        return redirect(url_for('main.search',articles_feed=search_articles))
+    else:
+        return render_template('search.html',related=search_articles,title=title)
+
+
+
 
 
