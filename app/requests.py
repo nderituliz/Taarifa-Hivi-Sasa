@@ -97,3 +97,19 @@ def process_articles_results(articles_list):
 
     return articles_results
 
+def search_artciles(articles_name):
+    
+    search_articles_url = 'https://newsapi.org/v2/everything?q=bitcoin&apiKey={}'.format(api_key,articles_name)
+    with urllib.request.urlopen(search_articles_url) as url:
+        search_articles_data = url.read()
+        search_articles_response = json.loads(search_articles_data)
+
+        search_articles_results = None
+
+        if search_articles_response['results']:
+            search_articles_list = search_articles_response['results']
+            search_articles_results = process_articles_results(search_articles_list)
+
+
+    return search_articles_results
+
