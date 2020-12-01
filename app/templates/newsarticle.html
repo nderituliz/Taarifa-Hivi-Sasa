@@ -1,0 +1,59 @@
+{% extends 'base.html'%}
+
+
+    <meta charset="UTF-8">
+    {% if title %}
+    <title> {{ title }}</title>
+    {% else %}
+    <title> News Articles </title>
+    {% endif %}
+
+
+
+    {% block content %}
+    <div class="container article-content">
+        <h1>{{ title }}</h1>
+
+        {% for articles_item in articles %}
+        <div class="column" id="article-column">
+
+
+            <div class="col-md-6">
+                <img src="{{articles_item.urlToImage}}" width="100%">
+            </div>
+
+            <div class="col-md-8">
+                <p><strong>{{ articles_item.title }}</strong></p>
+                <hr>
+                <p>{{ articles_item.description }}</p>
+
+                <div id="content-details">
+                    <p><em>{{articles_item.content}}</em></p>
+                </div>
+
+                <div>
+                        {%if articles_item.author%}
+                        <p>Posted By {{articles_item.author}}</a>.
+                        </p>
+                        {%endif%}
+        
+                        {%if articles_item.publishedAt%}
+                        <p>Posted on: {{articles_item.publishedAt[:10]}}</p>
+                        {%endif%}
+        
+                        <p><a href="{{ articles_item.url }}" class="btn btn-primary">Read full Article</a></p>
+        
+
+                </div>
+                
+            </div>
+
+        </div>
+        {% endfor %}
+
+
+
+    </div>
+
+
+    {% endblock%}
